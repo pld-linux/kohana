@@ -18,8 +18,13 @@ BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
+Kohana is a PHP5 framework that uses the Model View Controller
+architectural pattern. It aims to be secure, lightweight and easy to
+use.
 
 %description -l pl.UTF-8
+Kohana to framework dla PHP5 używający wzorzec Modelu, Widoku i
+Kontrolera. W zamierzeniu ma być bezpieczny, lekki i prosty w użyciu.
 
 %package examples
 Summary:	Example empty application
@@ -27,8 +32,10 @@ Summary(pl.UTF-8):	Przykładowa pusta aplikacja
 Group:		Development/Languages/PHP
 
 %description examples
+This package contains basic application structure.
 
 %description examples -l pl.UTF-8
+Pakiet zawiera podstawową strukturę aplikacji.
 
 %prep
 %setup -q -c
