@@ -11,7 +11,7 @@ License:	Kohana License (http://kohanaphp.com/license.html)
 Group:		Development/Languages/PHP
 Source0:	%{name}-trunk-r%{rel}.zip
 # Source0-md5:	4a491482ed5ed6e345fb80aeba3a0f50
-URL:		http://kohanaphp.com
+URL:		http://kohanaphp.com/
 BuildRequires:	rpm-php-pearprov >= 4.3
 BuildRequires:	sed >= 4.0
 Requires:	php-common >= 5.1.3
