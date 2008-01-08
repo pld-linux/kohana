@@ -13,6 +13,7 @@ Source0:	%{name}-trunk-r%{rel}.zip
 # Source0-md5:	4a491482ed5ed6e345fb80aeba3a0f50
 URL:		http://kohanaphp.com
 BuildRequires:	rpm-php-pearprov >= 4.3
+BuildRequires:	sed >= 4.0
 Requires:	php-common >= 5.1.3
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -30,6 +31,7 @@ Kontrolera. W zamierzeniu ma być bezpieczny, lekki i prosty w użyciu.
 Summary:	Example empty application
 Summary(pl.UTF-8):	Przykładowa pusta aplikacja
 Group:		Development/Languages/PHP
+Requires:	kohana
 
 %description examples
 This package contains basic application structure.
@@ -43,7 +45,7 @@ Pakiet zawiera podstawową strukturę aplikacji.
 %install
 rm -rf $RPM_BUILD_ROOT
 
-sed -i -e "s,$kohana_system = 'system',$kohana_system = '/usr/share/php/kohana/system'," trunk/index.php
+%{__sed} -i -e "s,$kohana_system = 'system',$kohana_system = '/usr/share/php/kohana/system'," trunk/index.php
 
 install -d $RPM_BUILD_ROOT%{kohanadir}
 cp -r trunk/{system,modules} $RPM_BUILD_ROOT%{kohanadir}
