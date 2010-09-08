@@ -1,3 +1,4 @@
+%define		php_min_version 5.2.4
 %include	/usr/lib/rpm/macros.php
 Summary:	Swift PHP framework
 Summary(pl.UTF-8):	Szybki framework dla PHP
@@ -10,12 +11,36 @@ Source0:	http://dev.kohanaframework.org/attachments/download/1596/%{name}-%{vers
 # Source0-md5:	d317c1fdcbe649d2862a3f602b1f6cd6
 URL:		http://www.kohanaframework.org/
 BuildRequires:	rpm-php-pearprov >= 4.3
+BuildRequires:	rpmbuild(macros) >= 1.461
 BuildRequires:	sed >= 4.0
-Requires:	php-common >= 4:5.1.3
+Requires:	php-common >= 4:%{php_min_version}
+Requires:	php-ctype
+Requires:	php-date
+Requires:	php-dom
+Requires:	php-filter
+Requires:	php-gd
+Requires:	php-hash
+Requires:	php-json
+Requires:	php-mbstring
+Requires:	php-mysql
+Requires:	php-pcre
+Requires:	php-session
+Requires:	php-simplexml
+Requires:	php-spl
+Requires:	php-xml
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_appdir	%{php_data_dir}/kohana
+
+# want no pear deps
+%define		_noautopear	pear
+
+# exclude optional php dependencies
+%define		_noautophp	%{nil}
+
+# put it together for rpmbuild
+%define		_noautoreq	%{?_noautophp} %{?_noautopear}
 
 %description
 Kohana is a PHP5 framework that uses the Model View Controller
@@ -44,9 +69,6 @@ mv kohana/* .; rmdir kohana
 
 %install
 rm -rf $RPM_BUILD_ROOT
-
-%{__sed} -i -e "s,\$kohana_system = 'system',\$kohana_system = '%{_appdir}/system'," index.php
-
 install -d $RPM_BUILD_ROOT%{_appdir}
 cp -a system modules $RPM_BUILD_ROOT%{_appdir}
 
@@ -59,14 +81,9 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %dir %{_appdir}
-%dir %{_appdir}/system
-%dir %{_appdir}/modules
-%{_appdir}/system/*
-%{_appdir}/modules/*
+%{_appdir}/system
+%{_appdir}/modules
 
 %files examples
 %defattr(644,root,root,755)
-%dir %{_examplesdir}/%{name}
-%dir %{_examplesdir}/%{name}/application
-%{_examplesdir}/%{name}/application/*
-%{_examplesdir}/%{name}/index.php
+%{_examplesdir}/%{name}
