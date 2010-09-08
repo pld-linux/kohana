@@ -1,3 +1,7 @@
+# TODO
+# - userguide to subpkg?
+# - find-lang.sh script to automate i18n
+# - each README.md as %doc?
 %define		php_min_version 5.2.4
 %include	/usr/lib/rpm/macros.php
 Summary:	Swift PHP framework
@@ -81,8 +85,57 @@ rm -rf $RPM_BUILD_ROOT
 %files
 %defattr(644,root,root,755)
 %dir %{_appdir}
-%{_appdir}/system
-%{_appdir}/modules
+%dir %{_appdir}/system
+%{_appdir}/system/base.php
+%{_appdir}/system/classes
+%{_appdir}/system/config
+%{_appdir}/system/messages
+%{_appdir}/system/utf8
+%{_appdir}/system/views
+
+%dir %{_appdir}/system/i18n
+%lang(en) %{_appdir}/system/i18n/en.php
+%lang(es) %{_appdir}/system/i18n/es.php
+%lang(fr) %{_appdir}/system/i18n/fr.php
+
+%dir %{_appdir}/modules
+%{_appdir}/modules/auth
+%{_appdir}/modules/cache
+%{_appdir}/modules/codebench
+%{_appdir}/modules/database
+%{_appdir}/modules/image
+%{_appdir}/modules/oauth
+%{_appdir}/modules/orm
+%{_appdir}/modules/pagination
+%{_appdir}/modules/unittest
+
+%dir %{_appdir}/modules/userguide
+%{_appdir}/modules/userguide/README.md
+%{_appdir}/modules/userguide/init.php
+%{_appdir}/modules/userguide/classes
+%{_appdir}/modules/userguide/config
+%{_appdir}/modules/userguide/media
+%{_appdir}/modules/userguide/messages
+%{_appdir}/modules/userguide/vendor
+%{_appdir}/modules/userguide/views
+%{_appdir}/modules/userguide/guide/*.md
+%dir %{_appdir}/modules/userguide/guide
+%lang(de) %{_appdir}/modules/userguide/guide/de-de
+%lang(es) %{_appdir}/modules/userguide/guide/es-es
+%lang(fr) %{_appdir}/modules/userguide/guide/fr-fr
+%lang(he) %{_appdir}/modules/userguide/guide/he-il
+%lang(nl) %{_appdir}/modules/userguide/guide/nl
+%lang(ru) %{_appdir}/modules/userguide/guide/ru-ru
+%lang(zh_CN) %{_appdir}/modules/userguide/guide/zh-cn
+
+%dir %{_appdir}/modules/userguide/i18n
+%lang(de) %{_appdir}/modules/userguide/i18n/de.php
+%lang(es) %{_appdir}/modules/userguide/i18n/es.php
+%lang(fr) %{_appdir}/modules/userguide/i18n/fr.php
+%lang(he) %{_appdir}/modules/userguide/i18n/he.php
+%lang(nl) %{_appdir}/modules/userguide/i18n/nl.php
+%lang(ru) %{_appdir}/modules/userguide/i18n/ru.php
+%lang(zh_CN) %{_appdir}/modules/userguide/i18n/zh.php
 
 %files examples
 %defattr(644,root,root,755)
