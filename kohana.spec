@@ -17,6 +17,7 @@ URL:		http://www.kohanaframework.org/
 BuildRequires:	rpm-php-pearprov >= 4.3
 BuildRequires:	rpmbuild(macros) >= 1.461
 BuildRequires:	sed >= 4.0
+BuildRequires:	unzip
 Requires:	php-common >= 4:%{php_min_version}
 Requires:	php-ctype
 Requires:	php-date
