@@ -18,21 +18,21 @@ BuildRequires:	rpm-php-pearprov >= 4.3
 BuildRequires:	rpmbuild(macros) >= 1.461
 BuildRequires:	sed >= 4.0
 BuildRequires:	unzip
-Requires:	php-common >= 4:%{php_min_version}
-Requires:	php-ctype
-Requires:	php-date
-Requires:	php-dom
-Requires:	php-filter
-Requires:	php-gd
-Requires:	php-hash
-Requires:	php-json
-Requires:	php-mbstring
-Requires:	php-mysql
-Requires:	php-pcre
-Requires:	php-session
-Requires:	php-simplexml
-Requires:	php-spl
-Requires:	php-xml
+Requires:	php(core) >= %{php_min_version}
+Requires:	php(ctype)
+Requires:	php(date)
+Requires:	php(dom)
+Requires:	php(filter)
+Requires:	php(gd)
+Requires:	php(hash)
+Requires:	php(json)
+Requires:	php(mbstring)
+Requires:	php(mysql)
+Requires:	php(pcre)
+Requires:	php(session)
+Requires:	php(simplexml)
+Requires:	php(spl)
+Requires:	php(xml)
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
