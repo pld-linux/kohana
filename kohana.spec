@@ -3,7 +3,6 @@
 # - find-lang.sh script to automate i18n
 # - each README.md as %doc?
 %define		php_min_version 5.2.4
-%include	/usr/lib/rpm/macros.php
 Summary:	Swift PHP framework
 Summary(pl.UTF-8):	Szybki framework dla PHP
 Name:		kohana
